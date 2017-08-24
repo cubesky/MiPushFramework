@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">MiPushFakeFramework</string>
-    <string name="descr">这是一个可以使手机内的所有小米推送服务关闭的软件。\n基于 @Trumeet 的 MiPushFramework 修改\n\n原项目地址\nhttps://github.com/Trumeet/MiPushFramework\n\n本项目地址\nhttps://github.com/cubesky/MiPushFramework\n\nPowered by @Trumeet @CubeSky\n</string>
+    <string name="descr">这是一个可以使手机内的所有小米推送服务关闭的软件。\n基于 @Trumeet 的 MiPushFramework 修改\n\n原项目地址\nhttps://github.com/Trumeet/MiPushFramework\n\n本项目地址\nhttps://github.com/cubesky/MiPushFrameworkFake\n\nPowered by @Trumeet @CubeSky\n</string>
     <string name="title_activity_main">小米推送框架伪装</string>
 </resources>
