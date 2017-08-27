@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">MiPushFakeFramework</string>
-    <string name="descr">这是一个可以使手机内的所有小米推送服务关闭的软件。\n基于 @Trumeet 的 MiPushFramework 修改\n\n原项目地址\nhttps://github.com/Trumeet/MiPushFramework\n\n本项目地址\nhttps://github.com/cubesky/MiPushFrameworkFake\n\nPowered by @Trumeet @CubeSky\n</string>
+    <string name="descr">这是一个可以使手机内的所有小米推送服务关闭的软件。\n基于 @Trumeet 的 MiPushFramework 修改\n\n原项目地址\nhttps://github.com/Trumeet/MiPushFramework\n\n本项目地址\nhttps://github.com/cubesky/MiPushFrameworkFake\n\n如果你的手机使用 Magisk 并且高级伪装失败，可以尝试使用 MiPushFake 模块\n详细信息\nhttps://github.com/cubesky/MiPushFake\n\n你可以在下面的地址下载到这个模块的 zip 包\nhttps://github.com/cubesky/MiPushFake/releases\n\nPowered by @Trumeet @CubeSky\n</string>
     <string name="title_activity_main">小米推送框架伪装</string>
+    <string name="fake_boot_success">高级伪装成功</string>
+    <string name="fake_boot_fail">高级伪装失败</string>
+    <string name="fake_build_status">Build Prop 伪装状态：%s</string>
+    <string name="active">激活</string>
 </resources>
