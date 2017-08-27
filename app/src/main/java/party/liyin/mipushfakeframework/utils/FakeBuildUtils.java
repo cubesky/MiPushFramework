@@ -24,7 +24,7 @@ final public class FakeBuildUtils {
     private static final Map<String, Class> MIUI_KEYS;
 
     static {
-        MIUI_KEYS = new HashMap<>(1);
+        MIUI_KEYS = new HashMap<>(2);
         MIUI_KEYS.put("ro.miui.ui.version.name", String.class);
         MIUI_KEYS.put("ro.miui.ui.version.code", Integer.class);
     }
