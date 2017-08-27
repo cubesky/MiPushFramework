@@ -17,14 +17,14 @@ class MainActivity : Activity() {
     }
 
     fun check(){
-        Thread(Runnable {
+        Thread({
             val isMiuiBuild = FakeBuildUtils.isMiuiBuild()
             runOnUiThread { fakebuild.setText(getString(R.string.fake_build_status,getString(if(isMiuiBuild) R.string.fake_boot_success else R.string.fake_boot_fail))) }
         }).start()
     }
 
     fun runFake() {
-        Thread(Runnable {
+        Thread({
             val isMiuiBuild = FakeBuildUtils.insertMiui()
             runOnUiThread { fakebuild.setText(getString(R.string.fake_build_status,getString(if(isMiuiBuild) R.string.fake_boot_success else R.string.fake_boot_fail))) }
         }).start()

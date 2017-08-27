@@ -5,9 +5,13 @@ import android.text.TextUtils;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.SimpleTimeZone;
 
 
 import static party.liyin.mipushfakeframework.utils.ShellUtils.exec;
@@ -22,6 +26,7 @@ final public class FakeBuildUtils {
     static {
         MIUI_KEYS = new HashMap<>(1);
         MIUI_KEYS.put("ro.miui.ui.version.name", String.class);
+        MIUI_KEYS.put("ro.miui.ui.version.code", Integer.class);
     }
 
     public static boolean isMiuiBuild () {
@@ -38,7 +43,7 @@ final public class FakeBuildUtils {
         return true;
     }
 
-    public static String getSystemProperty(String propName) {
+    private static String getSystemProperty(String propName) {
         String line;
         BufferedReader input = null;
         try {
@@ -79,27 +84,25 @@ final public class FakeBuildUtils {
      * @return success
      */
     private static boolean insert (String key, String value) {
-        if (hasProp(key)) {
-            // Do not insert if already have
-            return false;
-        }
-        return insert(key + "=" + value);
+        // Do not insert if already have
+        return !hasProp(key) && insert(key + "=" + value);
     }
 
     public static boolean insertMiui () {
         boolean result = mount("rw", "/system");
+        result |= backup();
         result |= insert("# Fake MIUI build by XiaomiPushServiceFramework.");
         for (String s : MIUI_KEYS.keySet()) {
             String value;
             Class c = MIUI_KEYS.get(s);
             if (String.class.equals(c)) {
-                value = "HELLO";
+                value = "AREUOK";
             } else if (Integer.class.equals(c)) {
                 value = "00000";
             } else if (Boolean.class.equals(c)) {
                 value = "false";
             } else {
-                value = "HELLO";
+                value = "AREUOK";
             }
             result |= insert(s, value);
         }
@@ -113,13 +116,13 @@ final public class FakeBuildUtils {
     }
 
     private static boolean mount (String flag, String point) {
-        StringBuilder builder = new StringBuilder();
-        builder.append("mount -o ");
-        builder.append(flag);
-        builder.append(",remount,");
-        builder.append(flag);
-        builder.append(" ");
-        builder.append(point);
-        return exec(builder.toString());
+        return exec("mount -o " + flag + ",remount," + flag + " " + point);
+    }
+
+    private static boolean backup () {
+        DateFormat df=SimpleDateFormat.getInstance();
+        df.setTimeZone(new SimpleTimeZone(0, "GMT"));
+        return exec("cp /system/build.prop \"/system/build.prop_" +
+                df.format(new Date()) + ".bak\"");
     }
 }
