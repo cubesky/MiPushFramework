@@ -19,14 +19,21 @@ class MainActivity : Activity() {
     fun check(){
         Thread({
             val isMiuiBuild = FakeBuildUtils.isMiuiBuild()
-            runOnUiThread { fakebuild.setText(getString(R.string.fake_build_status,getString(if(isMiuiBuild) R.string.fake_boot_success else R.string.fake_boot_fail))) }
+            runOnUiThread {
+                fakebuild.setText(getString(R.string.fake_build_status,getString(if(isMiuiBuild) R.string.fake_boot_success else R.string.fake_boot_fail)))
+                fakebuild_active.isEnabled = !isMiuiBuild
+            }
         }).start()
     }
 
     fun runFake() {
         Thread({
             val isMiuiBuild = FakeBuildUtils.insertMiui()
-            runOnUiThread { fakebuild.setText(getString(R.string.fake_build_status,getString(if(isMiuiBuild) R.string.fake_boot_success else R.string.fake_boot_fail))) }
+            runOnUiThread {
+                fakebuild.setText(getString(R.string.fake_build_status,getString(if(isMiuiBuild) R.string.fake_boot_success else R.string.fake_boot_fail)))
+                fakebuild_active.isEnabled = !isMiuiBuild
+            }
         }).start()
     }
+
 }

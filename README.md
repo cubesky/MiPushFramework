@@ -1,4 +1,4 @@
-# MiPushFakeFramework
+# MiPushFrameworkFake
 
 在任何非 MIUI 设备上关闭小米推送。
 
@@ -54,7 +54,7 @@
 
 ## TODO
 
-- [ ] 缺一个图标
+- [x] 缺一个图标
 
 ## 感谢
 
